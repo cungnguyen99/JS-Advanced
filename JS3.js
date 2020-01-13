@@ -31,3 +31,15 @@ var cat={
 }
 
 var sayCat=mouse.sayHi.bind(cat) //thì lúc này this ở đây chính là cat nên sẽ log ra My name is tom
+
+//ví dụ thêm
+function run(callback){
+    console.log('run....');
+    callback()
+}
+
+run(mouse.sayHi)//khi ta để như này nó sẽ k chạy ra this.name
+
+run(mouse.sayHi())//ta gọi như này sẽ báo lỗi do không được truyền vào một hàm như vậy
+
+run(mouse.sayHi.bind(mouse))//sẽ in ra this.name
