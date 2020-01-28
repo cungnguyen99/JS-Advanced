@@ -30,11 +30,22 @@ function Birds(name){
     this.name=name
 }
 
-Bird.prototype.run=function(){
+Birds.prototype.run=function(){
     console.log(`${this.name} is running...`)
 }
 
-function Parrot(name){
-    Animal.apply(this, arguments)
+function Parrot(name,age){
+    //nếu chỉ có mỗi tham số name thì k cần viết dòng this.age=age
+    Birds.apply(this, arguments)
+    this.age=age
 }
-Birds.prototype=new Animal()
+Parrot.prototype = Object.create(Birds.prototype)
+Parrot.prototype.constructor = Parrot;
+Parrot.prototype.flying = function () {
+    console.log(`${this.name} is flying! I am ${this.age}`);
+}
+
+const parrot=new Parrot('Birds',12)
+
+parrot.flying()
+parrot.run()
