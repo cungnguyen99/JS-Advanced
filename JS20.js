@@ -41,3 +41,6 @@ const obj5 = {
 console.log(obj5)
 
 //Để muốn khi thay đổi obj5.d.e=6 và obj3 không thay đổi ta phải dùng deepclone 
+const faultyClone = JSON.parse(JSON.stringify(obj3))
+faultyClone.d.e=900
+console.log({obj3, faultyClone})
